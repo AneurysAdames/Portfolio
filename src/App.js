@@ -1,19 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component, Fragment} from 'react';
+import {Switch, Route} from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
+import Experience from './components/Experience'
+import Contact from './components/Contact'
+import Portfolio from './components/Portfolio'
+import NoMatch from './components/NoMatch'
+import NavBar from './components/NavBar'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Fragment>
+        <NavBar />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/about' component={About} />
+          <Route exact path='/experience' component={Experience} />
+          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/portfolio' component={Portfolio} />
+          <Route component={NoMatch} />
+        </Switch>
+      </Fragment>
     );
   }
 }
